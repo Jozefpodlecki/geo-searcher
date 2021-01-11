@@ -1,0 +1,11 @@
+[
+    {
+        "criteria": "cheese exporters",
+        "countries": [
+            {
+                "id": "test",
+                "value": "Germany: US$4.6 billion (14.2% of total cheese exports)"
+            }
+        ]
+    }
+]

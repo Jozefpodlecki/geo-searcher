@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "baseUrl": "src",
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "CommonJS",
+        "target": "ES5",
+        "lib": [
+            "ES2019",
+            "DOM"
+        ],
+        "jsx": "react",
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "incremental": true
+    },
+    "exclude": [
+        "./src/**/*.spec.ts",
+        "./src/**/*.spec.tsx",
+        "node_modules",
+    ]
+}

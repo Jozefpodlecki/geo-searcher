@@ -1,0 +1,36 @@
+.container {
+    height: 100vh;
+    background: black;
+}
+
+.tooltip {
+    padding: 10px;
+}
+
+.overlay {
+    display: none;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 400;
+    background: #000000AA;
+    justify-content: center;
+    align-items: center;
+}
+
+.visible {
+    display: flex;
+}
+
+.header {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.input {
+    padding: 10px;
+    background: transparent;
+    font-size: 20px;
+    color: white;
+    border: 1px solid white;
+}
