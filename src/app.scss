@@ -3,6 +3,16 @@
     background: black;
 }
 
+.topnav {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.icon {
+    font-size: 20px;
+}
+
 .overlay {
     display: none;
     position: absolute;

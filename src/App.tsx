@@ -7,14 +7,20 @@ import Interaction from "components/Interaction";
 import { places as _places } from "assets";
 import { getPlaceInfoByLatLngAsync } from "api";
 import Tooltip from "components/Tooltip";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const App: FunctionComponent = () => {
 	const [{
 		iso_a3,
 		position,
 		places,
+		selectedCountry,
 	}, setState] = useState({
-		iso_a3: "GBR",
+		iso_a3: "",
+		selectedCountry: {
+			iso_a3: "",
+		},
 		position: {
 			lat: 51,
 			lng: 1,
@@ -41,7 +47,9 @@ const App: FunctionComponent = () => {
 			setState(state => ({
 				...state,
 				position: latlng,
-				iso_a3
+				selectedCountry: {
+					iso_a3,
+				}
 			}));
 			setTooltip(state => ({
 				...state,
@@ -49,6 +57,10 @@ const App: FunctionComponent = () => {
 				...info
 			}));
 		})
+	}
+
+	const onSearch = (event: React.MouseEvent<HTMLDivElement>) => {
+		event.preventDefault();
 	}
 
 	const onMouseOver = useCallback((latlng: LatLng) => {
@@ -77,6 +89,11 @@ const App: FunctionComponent = () => {
 			worldCopyJump={true}
 			fadeAnimation={true}
 			scrollWheelZoom={true}>
+			<div className={styles.topnav}>
+				<div className={styles.icon} onClick={onSearch}>
+					<FontAwesomeIcon icon={faSearch}/>
+				</div>
+			</div>
 			<Tooltip {...info}/>
 			<Interaction
 				onClick={onClick}
@@ -84,7 +101,8 @@ const App: FunctionComponent = () => {
 			{places.features.map((geojson) => 
 				<CountryLayer
 					key={geojson.properties.admin}
-					isSelected={geojson.properties.iso_a3 === iso_a3}
+					isHovering={geojson.properties.iso_a3 === iso_a3}
+					isSelected={selectedCountry && geojson.properties.iso_a3 === selectedCountry.iso_a3}
 					geojson={geojson} />)}
 		</MapContainer>
 	</div>

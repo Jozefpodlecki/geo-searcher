@@ -9,6 +9,7 @@ type Geojson = {
 }
 
 type Props = {
+    isHovering: boolean;
 	isSelected: boolean;
 	geojson: Geojson;
 }
@@ -24,12 +25,13 @@ const style = ({
 });
 
 const CountryLayer: FunctionComponent<Props> = ({
+    isHovering,
 	isSelected,
 	geojson,
 }) => {
     const computedStyle = useMemo(() => {
         return {
-            color: isSelected ? "white" : "gray"
+            color: isHovering || isSelected ? "white" : "gray"
         }
     }, [isSelected]);
 
